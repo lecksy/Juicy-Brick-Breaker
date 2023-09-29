@@ -10,21 +10,21 @@ func _ready():
 	randomize()
 	position = new_position
 	if score == 100:
-		$ColorRect.color = Color8(252,194,194)
+		$ColorRect.color = Color8(26,25,24)
 	elif score == 90:
-		$ColorRect.color = Color8(208,235,255)
+		$ColorRect.color = Color8(56,89,198)
 	elif score == 80:
-		$ColorRect.color = Color8(255,243,191)
+		$ColorRect.color = Color8(52,162,209)
 	elif score == 70:
-		$ColorRect.color = Color8(255,232,204)
+		$ColorRect.color = Color8(88,178,43)
 	elif score == 60:
-		$ColorRect.color = Color8(165,216,255)
+		$ColorRect.color = Color8(166,230,134)
 	elif score == 50:
-		$ColorRect.color = Color8(255,222,235)
+		$ColorRect.color = Color8(255,224,196)
 	elif score == 40:
-		$ColorRect.color = Color8(255,216,168)
+		$ColorRect.color = Color8(255,210,27)
 	elif score == 30:
-		$ColorRect.color = Color8(255,236,153)
+		$ColorRect.color = Color8(255,255,255)
 
 func _physics_process(_delta):
 	if dying:
