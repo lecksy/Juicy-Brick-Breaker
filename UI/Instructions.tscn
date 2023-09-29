@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://r1nm10jeqyta"]
+[gd_scene load_steps=3 format=3 uid="uid://r1nm10jeqyta"]
 
 [ext_resource type="Script" path="res://UI/Instructions.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://c6blkygu53cdj" path="res://Assets/laCartoonerie.TTF" id="2_1bqlc"]
 
 [node name="Instructions" type="Control"]
 process_mode = 3
@@ -26,6 +27,7 @@ anchor_bottom = 1.0
 offset_bottom = -248.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1bqlc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -33,6 +35,7 @@ vertical_alignment = 1
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("2_1bqlc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -43,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -200.0
 offset_bottom = -160.0
+theme_override_fonts/font = ExtResource("2_1bqlc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
