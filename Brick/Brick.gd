@@ -9,6 +9,22 @@ var powerup_prob = 0.1
 func _ready():
 	randomize()
 	position = new_position
+	if score == 100:
+		$ColorRect.color = Color8(252,194,194)
+	elif score == 90:
+		$ColorRect.color = Color8(208,235,255)
+	elif score == 80:
+		$ColorRect.color = Color8(255,243,191)
+	elif score == 70:
+		$ColorRect.color = Color8(255,232,204)
+	elif score == 60:
+		$ColorRect.color = Color8(165,216,255)
+	elif score == 50:
+		$ColorRect.color = Color8(255,222,235)
+	elif score == 40:
+		$ColorRect.color = Color8(255,216,168)
+	elif score == 30:
+		$ColorRect.color = Color8(255,236,153)
 
 func _physics_process(_delta):
 	if dying:
