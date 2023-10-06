@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmwf8wjdir6y5"]
+[gd_scene load_steps=5 format=3 uid="uid://dmwf8wjdir6y5"]
 
 [ext_resource type="Script" path="res://Paddle/Paddle.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cm6vuqxgpo74f" path="res://Assets/woah.png" id="2_ghcq4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(100, 20)
+
+[sub_resource type="Curve" id="Curve_urlw0"]
+_data = [Vector2(0.0135281, 0.981745), 0.0, 0.0, 0, 0, Vector2(0.994384, 0.410004), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Paddle" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -20,3 +25,23 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("1")
 
 [node name="Powerups" type="Node2D" parent="."]
+
+[node name="Confetti" type="CPUParticles2D" parent="."]
+position = Vector2(2.08165e-12, -15)
+emitting = false
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.4
+randomness = 0.6
+texture = ExtResource("2_ghcq4")
+emission_shape = 5
+emission_points = PackedVector2Array()
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+direction = Vector2(2.08165e-12, -1)
+initial_velocity_min = 200.0
+initial_velocity_max = 800.0
+angular_velocity_max = 800.0
+scale_amount_curve = SubResource("Curve_urlw0")
+hue_variation_max = 1.0

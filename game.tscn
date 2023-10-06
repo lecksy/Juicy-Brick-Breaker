@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=19 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
+[ext_resource type="Script" path="res://Ball/Comet_Container.gd" id="2_8ente"]
+[ext_resource type="Texture2D" uid="uid://bqc63u1cso1ga" path="res://Assets/Untitled_Artwork.png" id="2_gv7rk"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://ci5q3vmuimsfr" path="res://UI/Pause_Menu.tscn" id="5"]
@@ -9,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://do7pdpjxteg8e" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://r1nm10jeqyta" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Fever.gd" id="9"]
+[ext_resource type="AudioStream" uid="uid://c74aaeu05k3mt" path="res://Assets/bit-beats-1-168243.mp3" id="12_bcedn"]
+[ext_resource type="AudioStream" uid="uid://b6klsd0pg6ivk" path="res://Assets/untitled.wav" id="13_6bsk1"]
+[ext_resource type="AudioStream" uid="uid://dac8t4hqkakmb" path="res://Assets/tdok.wav" id="14_wx0s7"]
+[ext_resource type="AudioStream" uid="uid://vrogfev7waiw" path="res://Assets/ttik.wav" id="15_vvpt8"]
+[ext_resource type="AudioStream" uid="uid://dbprl2xw0jd3k" path="res://Assets/dtood.wav" id="16_ypd17"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -18,6 +25,14 @@ size = Vector2(1224, 200)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
+
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("2_8ente")
+
+[node name="background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.843137)
+position = Vector2(580, 400)
+texture = ExtResource("2_gv7rk")
 
 [node name="Wall_Container" type="Node2D" parent="."]
 
@@ -75,9 +90,24 @@ visible = false
 [node name="Pause_Menu" parent="UI" instance=ExtResource("5")]
 process_mode = 3
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_bcedn")
+autoplay = true
+
+[node name="Wall_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_6bsk1")
+
+[node name="Paddle_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_wx0s7")
+
+[node name="Brick_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_vvpt8")
+
+[node name="Die_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_ypd17")
+pitch_scale = 1.97
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]

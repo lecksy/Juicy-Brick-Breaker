@@ -4,6 +4,7 @@ var min_speed = 100.0
 var max_speed = 600.0
 var speed_multiplier = 1.0
 var accelerate = false
+var h_rotate = 0.0
 
 var released = true
 
@@ -19,6 +20,7 @@ func _ready():
 		min_speed *= level["multiplier"]
 		max_speed *= level["multiplier"]
 	
+
 
 func _on_Ball_body_entered(body):
 	if body.has_method("hit"):
@@ -48,6 +50,16 @@ func _integrate_forces(state):
 	if state.linear_velocity.length() > max_speed * speed_multiplier:
 		state.linear_velocity = state.linear_velocity.normalized() * max_speed * speed_multiplier
 
+func comet():
+	h_rotate = wrapf(h_rotate+0.01, 0, 1)
+	var comet_container = get_node_or_null("/root/Game/Comet_Container")
+	if comet_container != null:
+		var sprite = $bmo.duplicate()
+		sprite.global_position = global_position
+		sprite.modulate.s = 0.6
+		sprite.modulate.h = h_rotate
+		comet_container.add_child(sprite)
+
 func change_size(s):
 	$ColorRect.scale = s
 	$CollisionShape2D.scale = s
@@ -56,4 +68,6 @@ func change_speed(s):
 	speed_multiplier = s
 
 func die():
+	var die_sound = get_node("/root/Game/Die_Sound")
+	die_sound.play()
 	queue_free()
