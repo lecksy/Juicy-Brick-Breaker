@@ -13,7 +13,7 @@ Music
 Created and added sound effects
 Particles
 Swaying bricks
-Comet Trail
+Comet trail
 Created paddle and ball sprites
 Moving mouth
 Screen shake
