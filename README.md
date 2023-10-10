@@ -10,8 +10,11 @@ Added color
 Hand-drawn background images
 Animated bricks appearing
 Animated bricks falling off
-Added music
-Added sound effects
+Music
+Sound effects
+Particles
+Swaying bricks
+Comet (in progress)
 
 ## References
 Based on the show "Adventure Time"
