@@ -2,8 +2,7 @@
 Juicy Brick Breaker
 October 11, 2023
 
-Description
-
+An Adventure Time themed classic brick breaker game with a few interesting features.
 
 ## Implementation
 Added color to bricks
@@ -14,10 +13,11 @@ Music
 Created and added sound effects
 Particles
 Swaying bricks
-Comet (in progress)
+Comet Trail
 Created paddle and ball sprites
 Moving mouth
 Screen shake
+Bricks color cycle
 
 ## References
 Based on the show "Adventure Time"
