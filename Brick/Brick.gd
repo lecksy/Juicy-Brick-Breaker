@@ -59,13 +59,16 @@ func _physics_process(_delta):
 		$ColorRect.color = colors[color_index]
 		color_completed = true
 	var pos_x = (sin(Global.sway_index)*(sway_amplitude + sway_randomizer.x))
-	var pos_y = (cos(Global.sway_index)*(sway_amplitude + sway_randomizer.x))
+	var pos_y = (cos(Global.sway_index)*(sway_amplitude + sway_randomizer.y))
 	$ColorRect.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_y)
 	if dying and not tween and not $Confetti:
 		queue_free()
 
 func hit(_ball):
 	die()
+	var Camera = get_node_or_null("/root/Game/Camera")
+	if Camera != null:
+		Camera.add_trauma(2.0)
 
 func die():
 	var Brick_Sound = get_node("/root/Game/Brick_Sound")

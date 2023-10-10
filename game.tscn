@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bd5m3yq1k5fx8"]
+[gd_scene load_steps=20 format=3 uid="uid://bd5m3yq1k5fx8"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmwf8wjdir6y5" path="res://Paddle/Paddle.tscn" id="2"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dac8t4hqkakmb" path="res://Assets/tdok.wav" id="14_wx0s7"]
 [ext_resource type="AudioStream" uid="uid://vrogfev7waiw" path="res://Assets/ttik.wav" id="15_vvpt8"]
 [ext_resource type="AudioStream" uid="uid://dbprl2xw0jd3k" path="res://Assets/dtood.wav" id="16_ypd17"]
+[ext_resource type="Script" path="res://Effects/Camera.gd" id="17_83mhb"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -26,13 +27,13 @@ size = Vector2(1224, 200)
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
 
-[node name="Comet_Container" type="Node2D" parent="."]
-script = ExtResource("2_8ente")
-
 [node name="background" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.843137)
 position = Vector2(580, 400)
 texture = ExtResource("2_gv7rk")
+
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("2_8ente")
 
 [node name="Wall_Container" type="Node2D" parent="."]
 
@@ -109,5 +110,9 @@ stream = ExtResource("15_vvpt8")
 [node name="Die_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_ypd17")
 pitch_scale = 1.97
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("17_83mhb")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]

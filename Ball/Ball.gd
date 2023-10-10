@@ -54,7 +54,7 @@ func comet():
 	h_rotate = wrapf(h_rotate+0.01, 0, 1)
 	var comet_container = get_node_or_null("/root/Game/Comet_Container")
 	if comet_container != null:
-		var sprite = $bmo.duplicate()
+		var sprite = $Sprite.duplicate()
 		sprite.global_position = global_position
 		sprite.modulate.s = 0.6
 		sprite.modulate.h = h_rotate
@@ -71,3 +71,6 @@ func die():
 	var die_sound = get_node("/root/Game/Die_Sound")
 	die_sound.play()
 	queue_free()
+	var Camera = get_node_or_null("/root/Game/Camera")
+	if Camera != null:
+		Camera.add_trauma(3.0)
