@@ -33,6 +33,7 @@ func _input(event):
 		released = true
 
 func _integrate_forces(state):
+	comet()
 	if not released:
 		var paddle = get_node_or_null("/root/Game/Paddle_Container/Paddle")
 		if paddle != null:

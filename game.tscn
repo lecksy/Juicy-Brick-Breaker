@@ -32,9 +32,6 @@ modulate = Color(1, 1, 1, 0.843137)
 position = Vector2(580, 400)
 texture = ExtResource("2_gv7rk")
 
-[node name="Comet_Container" type="Node2D" parent="."]
-script = ExtResource("2_8ente")
-
 [node name="Wall_Container" type="Node2D" parent="."]
 
 [node name="Wall_Left" type="StaticBody2D" parent="Wall_Container"]
@@ -93,6 +90,9 @@ process_mode = 3
 visible = false
 
 [node name="Instructions" parent="UI" instance=ExtResource("8")]
+
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("2_8ente")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_bcedn")

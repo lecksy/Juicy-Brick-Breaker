@@ -38,7 +38,7 @@ func _ready():
 	randomize()
 	position.x = new_position.x
 	position.y = -100
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(self, "position", new_position, time_appear + randf()*2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
 	if score >= 100: color_index = 0
 	elif score >= 90: color_index = 1
@@ -49,22 +49,28 @@ func _ready():
 	elif score >= 40: color_index = 6
 	else: color_index = 7
 	$ColorRect.color = colors[color_index]
+	sway_initial_position = $ColorRect.position
+	sway_randomizer = Vector2(randf()*6-3.0, randf()*6-3.0)
 
 func _physics_process(_delta):
-	color_distance = Global.color_position.distance_to(global_position)  / 100
-	if Global.color_rotate >= 0:
-		$ColorRect.color = colors[(int(floor(color_distance + Global.color_rotate))) % len(colors)]
-		color_completed = false
-	elif not color_completed:
-		$ColorRect.color = colors[color_index]
-		color_completed = true
+	if dying and not tween and not $Confetti:
+		queue_free()
+	elif not get_tree().paused:
+		color_distance = Global.color_position.distance_to(global_position)  / 100
+		if Global.color_rotate >= 0:
+			$ColorRect.color = colors[(int(floor(color_distance + Global.color_rotate))) % len(colors)]
+			color_completed = false
+		elif not color_completed:
+			$ColorRect.color = colors[color_index]
+			color_completed = true
 	var pos_x = (sin(Global.sway_index)*(sway_amplitude + sway_randomizer.x))
 	var pos_y = (cos(Global.sway_index)*(sway_amplitude + sway_randomizer.y))
 	$ColorRect.position = Vector2(sway_initial_position.x + pos_x, sway_initial_position.y + pos_y)
-	if dying and not tween and not $Confetti:
-		queue_free()
+	
 
 func hit(_ball):
+	Global.color_rotate = Global.color_rotate_amount
+	Global.color_position = _ball.global_position
 	die()
 	var Camera = get_node_or_null("/root/Game/Camera")
 	if Camera != null:
